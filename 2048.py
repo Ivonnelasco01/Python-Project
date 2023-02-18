@@ -39,3 +39,5 @@ def make_GUI(self):
             text="Score",
             font=c.SCORE_LABEL_FONT
         ).grid(row=0)
+        self.score_label = tk.Label(score_frame, text="0", font=c.SCORE_FONT)
+        self.score_label.grid(row=1)
