@@ -16,6 +16,12 @@ class Game(tk.Frame):
         self.make_GUI()
         self.start_game()
 
+        self.master.bind("<left>", self.left)
+        self.master.bind("<right>", self.right)
+        self.master.bind("<up>", self.up)
+        self.master.bind("<down>", self.down)
+
+
         self.mainloop()
 
     def make_GUI(self):
@@ -144,4 +150,14 @@ class Game(tk.Frame):
                     )
         self.score_label.configure(text=self.score)
         self.update_idletasks()
+
+# Key-press Functions
+
+    def left(self, event):
+        self.stack()
+        self.combine()
+        self.stack()
+        self.add_new_title()
+        self.update_GUI()
+
 Game()
