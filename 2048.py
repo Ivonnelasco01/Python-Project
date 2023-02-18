@@ -16,10 +16,10 @@ class Game(tk.Frame):
         self.make_GUI()
         self.start_game()
 
-        self.master.bind("<left>", self.left)
-        self.master.bind("<right>", self.right)
-        self.master.bind("<up>", self.up)
-        self.master.bind("<down>", self.down)
+        self.master.bind("<Left>", self.left)
+        self.master.bind("<Right>", self.right)
+        self.master.bind("<Up>", self.up)
+        self.master.bind("<Down>", self.down)
 
 
         self.mainloop()
@@ -189,3 +189,10 @@ class Game(tk.Frame):
         self.transpose()
         self.add_new_title()
         self.update_GUI()
+
+    #Check if game is over (Win/Lose)
+
+    def game_over(self):
+        if any(2048 in row for row in self.matrix):
+            game_over_frame = tk.Frame(self.main_grid, borderwidth=2)
+            game_over_frame.place(relx=0.5, rely=0.5, anchor="center")
