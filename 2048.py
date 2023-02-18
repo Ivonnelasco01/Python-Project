@@ -232,3 +232,10 @@ class Game(tk.Frame):
                 fg=c.GAME_OVER_FONT_COLOR,
                 font=c.GAME_OVER_FONT
             ).pack()
+
+def main():
+    Game()
+
+
+if __name__ == "__main__":
+    main()
