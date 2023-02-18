@@ -21,7 +21,6 @@ class Game(tk.Frame):
         self.master.bind("<Up>", self.up)
         self.master.bind("<Down>", self.down)
 
-
         self.mainloop()
 
     def make_GUI(self):
@@ -43,16 +42,16 @@ class Game(tk.Frame):
                 row.append(cell_data)
             self.cells.append(row)
 
-            # make score header
-            score_frame = tk.Frame(self)
-            score_frame.place(relx=0.5, y=45, anchor="center")
-            tk.Label(
-                score_frame,
-                text="Score",
-                font=c.SCORE_LABEL_FONT
-            ).grid(row=0)
-            self.score_label = tk.Label(score_frame, text="0", font=c.SCORE_FONT)
-            self.score_label.grid(row=1)
+        # make score header
+        score_frame = tk.Frame(self)
+        score_frame.place(relx=0.5, y=45, anchor="center")
+        tk.Label(
+            score_frame,
+            text="Score",
+            font=c.SCORE_LABEL_FONT
+        ).grid(row=0)
+        self.score_label = tk.Label(score_frame, text="0", font=c.SCORE_FONT)
+        self.score_label.grid(row=1)
 
 
 
@@ -61,8 +60,8 @@ class Game(tk.Frame):
         self.matrix = [[0] * 4 for _ in range(4)]
 
         # fill 2 random cells with 2s
-        row = random. randint(0, 3)
-        col = random.randint(0,3)
+        row = random.randint(0, 3)
+        col = random.randint(0, 3)
         self.matrix[row][col] = 2
         self.cells[row][col]["frame"].configure(bg=c.CELL_COLORS[2])
         self.cells[row][col]["number"].configure(
@@ -72,8 +71,8 @@ class Game(tk.Frame):
             text="2"
         )
         while(self.matrix[row][col] !=0):
-            row = random.randint(0,3)
-            col = random.randint(0,3)
+            row = random.randint(0, 3)
+            col = random.randint(0, 3)
         self.matrix[row][col] = 2
         self.cells[row][col]["frame"].configure(bg=c.CELL_COLORS[2])
         self.cells[row][col]["number"].configure(
@@ -118,17 +117,17 @@ class Game(tk.Frame):
         new_matrix = [[0] * 4 for _ in range(4)]
         for i in range(4):
             for j in range(4):
-                new_matrix[i][j] = self.matrix[i][j]
+                new_matrix[i][j] = self.matrix[j][i]
         self.matrix = new_matrix 
 
     # Add a new 2 or 4 tile randomly to an empty cell
 
     def add_new_title(self):
-        row = random. randint(0, 3)
-        col = random.randint(0,3)
-        while(self.matrix[row][col] !=0):
-            row = random.randint(0,3)
-            col = random.randint(0,3)
+        row = random.randint(0, 3)
+        col = random.randint(0, 3)
+        while(self.matrix[row][col] != 0):
+            row = random.randint(0, 3)
+            col = random.randint(0, 3)
         self.matrix[row][col] = random.choice([2,4])
 
     # Update the GUI to match the matrix
@@ -139,7 +138,7 @@ class Game(tk.Frame):
                 cell_value = self.matrix[i][j]
                 if cell_value == 0:
                     self.cells[i][j]["frame"].configure(bg=c.EMPTY_CELL_COLOR)
-                    self.cells[i][j]["number"].configure(ng=c.EMPTY_CELL_COLOR, text="")
+                    self.cells[i][j]["number"].configure(bg=c.EMPTY_CELL_COLOR, text="")
                 else:
                     self.cells[i][j]["frame"].configure(bg=c.CELL_COLORS[cell_value])
                     self.cells[i][j]["number"].configure(
@@ -151,7 +150,7 @@ class Game(tk.Frame):
         self.score_label.configure(text=self.score)
         self.update_idletasks()
 
-# Key-press Functions
+    # Key-press Functions
 
     def left(self, event):
         self.stack()
@@ -203,8 +202,8 @@ class Game(tk.Frame):
         return False
 
     def vertical_move_exists(self):
-        for i in range(4):
-            for j in range(3):
+        for i in range(3):
+            for j in range(4):
                 if self.matrix[i][j] == self.matrix[i + 1][j]:
                     return True
         return False
