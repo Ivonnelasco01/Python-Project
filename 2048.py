@@ -1,5 +1,6 @@
 import tkinter as tk
 import colors as c
+import random
 
 class Game(tk.Frame):
     def __init__(self):
@@ -48,3 +49,18 @@ class Game(tk.Frame):
     def start_game(self):
         # create matrix of zeroes
         self.matrix = [[0] * 4 for _ in range(4)]
+
+        # fill 2 random cells with 2s
+        row = random. randint(0, 3)
+        col = random.randint(0,3)
+        self.matrix[row][col] = 2
+        self.cells[row][col]["frame"].configure(bg=c.CELL_COLORS[2])
+        self.cells[row][col]["number"].configure(
+            bg=c.CELL_COLORS[2],
+            fg=c.CELL_NUMBER_COLORS[2],
+            font=c.CELL_NUMBER_FONTS[2],
+            text="2"
+        )
+        while(self.matrix[row][col] !=0):
+            row = random.randint(0.3)
+            col = random.randint(0,3)
