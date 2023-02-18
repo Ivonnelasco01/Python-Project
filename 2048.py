@@ -24,3 +24,9 @@ def make_GUI(self):
                 width=150,
                 height=150
             )
+            cell_frame.grid(row=i, column=j, padx=5, pady=5)
+            cell_number = tk.Label(self.main_grid, bg=c.EMPTY_CELL_COLOR)
+            cell_number.grid(row=i, column=j)
+            cell_data = {"frame": cell_frame, "number": cell_number}
+            row.append(cell_data)
+        self.cells.append(row)
