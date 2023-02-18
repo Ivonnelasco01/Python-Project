@@ -199,6 +199,13 @@ class Game(tk.Frame):
                     return True
         return False
 
+    def vertical_move_exists(self):
+        for i in range(4):
+            for j in range(3):
+                if self.matrix[i][j] == self.matrix[i + 1][j]:
+                    return True
+        return False
+
     # Check if game is over (Win/Lose)
 
     def game_over(self):
