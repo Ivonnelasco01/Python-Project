@@ -2,6 +2,7 @@ import tkinter as tk
 import colors as c
 import random
 
+
 class Game(tk.Frame):
     def __init__(self):
         tk.Frame.__init__(self)
@@ -47,6 +48,8 @@ class Game(tk.Frame):
             self.score_label = tk.Label(score_frame, text="0", font=c.SCORE_FONT)
             self.score_label.grid(row=1)
 
+
+
     def start_game(self):
         # create matrix of zeroes
         self.matrix = [[0] * 4 for _ in range(4)]
@@ -75,6 +78,7 @@ class Game(tk.Frame):
         )
 
         self.score = 0
+
 
     # Matrix Manipulation Functions
 
@@ -105,9 +109,10 @@ class Game(tk.Frame):
         self.matrix = new_matrix
 
     def transpose(self):
-        new_matrix = [[0] * 4 _ in range(4)]
+        new_matrix = [[0] * 4 for _ in range(4)]
         for i in range(4):
-            new_matrix[i][j] = self.matrix[i][j]
+            for j in range(4):
+                new_matrix[i][j] = self.matrix[i][j]
         self.matrix = new_matrix 
 
     # Add a new 2 or 4 tile randomly to an empty cell
@@ -137,3 +142,5 @@ class Game(tk.Frame):
                         font=c.CELL_NUMBER_FONTS[cell_value],
                         text=str(cell_value)
                     )
+        self.score_label.configure(text=self.score)
+        self.update_idletasks()
