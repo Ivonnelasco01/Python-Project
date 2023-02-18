@@ -13,6 +13,7 @@ class Game(tk.Frame):
         )
         self.main_grid.grid(pady=(100,0))
         self.make_GUI()
+        self.start_game()
 
         self.mainloop()
 
@@ -72,3 +73,5 @@ class Game(tk.Frame):
             font=c.CELL_NUMBER_FONTS[2],
             text="2"
         )
+
+        self.score = 0
