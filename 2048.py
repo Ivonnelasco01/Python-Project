@@ -160,4 +160,32 @@ class Game(tk.Frame):
         self.add_new_title()
         self.update_GUI()
 
-Game()
+    def right(self, event):
+        self.reverse()
+        self.stack()
+        self.combine()
+        self.stack()
+        self.reverse()
+        self.add_new_title()
+        self.update_GUI()
+
+
+    def up(self, event):
+        self.transpose()
+        self.stack()
+        self.combine()
+        self.stack()
+        self.transpose()
+        self.add_new_title()
+        self.update_GUI()
+
+    def down(self, event):
+        self.transpose()
+        self.reverse()
+        self.stack()
+        self.combine()
+        self.stack()
+        self.reverse()
+        self.transpose()
+        self.add_new_title()
+        self.update_GUI()
