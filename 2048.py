@@ -12,7 +12,7 @@ class Game(tk.Frame):
         )
         self.main_grid.grid(pady=(100,0))
         self.make_GUI()
-        
+
         self.mainloop()
 
     def make_GUI(self):
@@ -45,4 +45,6 @@ class Game(tk.Frame):
             self.score_label = tk.Label(score_frame, text="0", font=c.SCORE_FONT)
             self.score_label.grid(row=1)
 
-Game()
+    def start_game(self):
+        # create matrix of zeroes
+        self.matrix = [[0] * 4 for _ in range(4)]
