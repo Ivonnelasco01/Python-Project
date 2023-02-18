@@ -63,7 +63,7 @@ class Game(tk.Frame):
             text="2"
         )
         while(self.matrix[row][col] !=0):
-            row = random.randint(0.3)
+            row = random.randint(0,3)
             col = random.randint(0,3)
         self.matrix[row][col] = 2
         self.cells[row][col]["frame"].configure(bg=c.CELL_COLORS[2])
@@ -95,3 +95,11 @@ class Game(tk.Frame):
                     self.matrix[i][j] *= 2
                     self.matrix[i][j + 1] = 0
                     self.score += self.matrix[i][j]
+
+    def reverse(self):
+        new_matrix = []
+        for i in range(4):
+            new_matrix.append([])
+            for j in range(4):
+                new_matrix[i].append(self.matrix[i][3 - j])
+        self.matrix = new_matrix
