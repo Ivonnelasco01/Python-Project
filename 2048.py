@@ -190,7 +190,16 @@ class Game(tk.Frame):
         self.add_new_title()
         self.update_GUI()
 
-    #Check if game is over (Win/Lose)
+    # Check if any moves are possible
+
+    def horizontal_move_exists(self):
+        for i in range(4):
+            for j in range(3):
+                if self.matrix[i][j] == self.matrix[i][j+1]:
+                    return True
+        return False
+
+    # Check if game is over (Win/Lose)
 
     def game_over(self):
         if any(2048 in row for row in self.matrix):
