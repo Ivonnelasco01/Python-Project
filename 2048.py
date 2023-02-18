@@ -159,6 +159,7 @@ class Game(tk.Frame):
         self.stack()
         self.add_new_title()
         self.update_GUI()
+        self.game_over()
 
     def right(self, event):
         self.reverse()
@@ -168,7 +169,7 @@ class Game(tk.Frame):
         self.reverse()
         self.add_new_title()
         self.update_GUI()
-
+        self.game_over()
 
     def up(self, event):
         self.transpose()
@@ -178,6 +179,7 @@ class Game(tk.Frame):
         self.transpose()
         self.add_new_title()
         self.update_GUI()
+        self.game_over()
 
     def down(self, event):
         self.transpose()
@@ -189,6 +191,7 @@ class Game(tk.Frame):
         self.transpose()
         self.add_new_title()
         self.update_GUI()
+        self.game_over()
 
     # Check if any moves are possible
 
@@ -219,4 +222,13 @@ class Game(tk.Frame):
                 fg=c.GAME_OVER_FONT_COLOR,
                 font=c.GAME_OVER_FONT
             ).pack()
-        elif not any(0 in row for row in self.matrix)
+        elif not any(0 in row for row in self.matrix) and not self.horizontal_move_exists() and not self.vertical_move_exists():
+            game_over_frame = tk.Frame(self.main_grid, borderwidth=2)
+            game_over_frame.place(relx=0.5, rely=0.5, anchor="center")
+            tk.Label(
+                game_over_frame,
+                text= "Game Over!",
+                bg=c.LOSER_BG,
+                fg=c.GAME_OVER_FONT_COLOR,
+                font=c.GAME_OVER_FONT
+            ).pack()
