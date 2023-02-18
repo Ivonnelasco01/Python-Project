@@ -203,3 +203,4 @@ class Game(tk.Frame):
                 fg=c.GAME_OVER_FONT_COLOR,
                 font=c.GAME_OVER_FONT
             ).pack()
+        elif not any(0 in row for row in self.matrix)
