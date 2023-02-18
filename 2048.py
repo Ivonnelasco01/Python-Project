@@ -11,4 +11,16 @@ class Game(tk.Frame):
             self, bg = c.GRID_COLOR, bd=3, width=600, height=600
         )
         self.main_grid.grid(pady=(100,0))
-        
+
+def make_GUI(self):
+    # make grid
+    self.cells = []
+    for i in range(4):
+        row = []
+        for j in range(4):
+            cell_frame = tk.Frame(
+                self.main_grid,
+                bg = c.EMPTY_CELL_COLOR,
+                width=150,
+                height=150
+            )
