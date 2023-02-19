@@ -15,7 +15,12 @@ class Game(tk.Frame):
         self.main_grid.grid(pady=(100,0))
         self.make_GUI()
         self.start_game()
-
+        
+        self.master.bind("<a>", self.left)
+        self.master.bind("<d>", self.right)
+        self.master.bind("<w>", self.up)
+        self.master.bind("<s>", self.down)
+        
         self.master.bind("<Left>", self.left)
         self.master.bind("<Right>", self.right)
         self.master.bind("<Up>", self.up)
